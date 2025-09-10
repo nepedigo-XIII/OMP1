@@ -59,7 +59,7 @@ def create_forecast_single(df):
     model_adjusted = LinearRegression().fit(X_adjusted, y)
     y_pred_adjusted = model_adjusted.predict(X_adjusted)
 
-
+    print("\n===========================================================================\n")
     # Metrics
     mse = mean_squared_error(y, y_pred_adjusted)
     r2 = r2_score(y, y_pred_adjusted)
@@ -67,13 +67,13 @@ def create_forecast_single(df):
     print(f"R^2 Score: {r2}")
     print(f"Coefficient: {model_adjusted.coef_[0]} (ie. Slope of line, impact of Year on Eligibles)")
     print(f"Intercept: {model_adjusted.intercept_}\n")
-
+    print("\n===========================================================================\n")
     # --- Forecast future years as NumPy, keep flatten() working ---
     future_years = np.arange(df['Year'].max() + 1, df['Year'].max() + 6).reshape(-1, 1)
     future_years_adjusted = future_years - 2017
     future_predictions = model_adjusted.predict(future_years_adjusted)
 
-    print("Future Predictions for Number of Eligibles in Madison County:")
+    print("Future Predictions for Number of Eligibles in Madison County:\n")
     for year, pred in zip(future_years.ravel(), future_predictions):
         print(f"Year: {year}, Predicted Eligibles: {pred:.2f}")
         
@@ -90,7 +90,7 @@ def create_forecast_single(df):
     plt.grid(True)
     plt.show()
 
-    input("Press Enter to continue...")
+    input("\nPress Enter to continue...")
     plt.close()
 
 
@@ -132,9 +132,9 @@ def return_forecast_single(df):
     future_years_adjusted = future_years - 2017
     future_predictions = model_adjusted.predict(future_years_adjusted)
 
-    print("Future Predictions for Number of Eligibles in Madison County:")
+    print("Future Predictions for Number of Eligibles in Madison County:\n")
     for year, pred in zip(future_years.ravel(), future_predictions):
-        print(f"Year: {year}, Predicted Eligibles: {pred:.2f}")
+        print(f"[Historical Single Var] Year: {year}, Predicted Eligibles: {pred:.2f}")
 
     # Return a dictionary of year: prediction
     forecast_dict = {year: pred for year, pred in zip(future_years.ravel(), future_predictions)}
@@ -164,7 +164,7 @@ def create_forecast_multiple(df):
 
     # first rerun initial single variable year model to get baseline
     if vars['year']:
-        print("Running baseline Year-only model...")
+        print("Running baseline Year-only model...\n")
         result = return_forecast_single(df)
 
         # Add results to forecasts
@@ -218,7 +218,7 @@ def create_forecast_multiple(df):
         plt.show()
 
         # await user input to continue
-        input("Press Enter to continue...")
+        input("\nPress Enter to continue...")
         plt.close()
 
         forecasts['unemployment'] = future_predictions_unemp
@@ -269,7 +269,7 @@ def create_forecast_multiple(df):
         plt.legend()
         plt.grid(True)
         plt.show()
-        input("Press Enter to continue...") 
+        input("\nPress Enter to continue...") 
         plt.close()
         
 
@@ -299,7 +299,7 @@ def create_forecast_multiple(df):
     print("\n===========================================================================\n")
     print("Combined Future Predictions for Number of Eligibles in Madison County:")
     for year, pred in zip(future_years.ravel(), combined_forecast):
-        print(f"Year: {year}, Predicted Eligibles: {pred:.2f}")
+        print(f"[Combined Model] Year: {year}, Predicted Eligibles: {pred:.2f}")
 
     
 
@@ -316,7 +316,7 @@ def create_forecast_multiple(df):
     plt.show()
     
 
-    input("Press Enter to continue...")
+    input("\nPress Enter to continue...")
     plt.close()
 
     # Save forecast to CSV, round to whole numbers
@@ -344,7 +344,7 @@ def create_forecast_multiple(df):
 # Main function to run the script
 def main():
     clear_screen()
-    print("--- Madison County Eligibles Forecasting (Single Variable) ---\n")
+    print("------ Madison County Eligibles Forecasting (Single Variable) ------\n")
     df = toDF()
     # generate_summary(df)
     print()
