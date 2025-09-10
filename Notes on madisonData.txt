@@ -1,0 +1,3 @@
+The Alabama state unemployment rate column was taken from the FRED database, JAN of every year
+
+The CPI data was taken from `usinflationcalculator.com`, Annual Average
