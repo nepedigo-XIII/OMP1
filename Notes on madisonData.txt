@@ -1,7 +1,7 @@
-The Alabama state unemployment rate column was taken from the FRED database, JAN of every year
+The Alabama state unemployment rate column was taken from the FRED database, JAN of every year (https://fred.stlouisfed.org/series/ALMADI9URN)
 
 The CPI data was taken from `usinflationcalculator.com`, Annual Average
 
-Median Household Income is for Madison from FRED
+Median Household Income is for Madison from FRED (https://fred.stlouisfed.org/series/MHIAL01089A052NCEN )
 
-SNAP Recipients is for Madison from FRED
+SNAP Recipients is for Madison from FRED (https://fred.stlouisfed.org/series/CBR01089ALA647NCEN )
