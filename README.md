@@ -14,10 +14,10 @@ pip install pandas numpy scikit-learn matplotlib seaborn
 
 **USAGE**:
 1. Ensure you have the required libraries installed.
-2. Place `madison_data.csv` in the same directory as `RegressionModel.py`.
+2. Place `madison_data.csv` in the same directory as `RegressionModelV3.py`.
 3. Run the script using Python:
    ```bash
-   python RegressionModel.py
+   python RegressionModelV3.py
    ```
 
 **DESCRIPTION**:
